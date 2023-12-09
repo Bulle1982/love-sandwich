@@ -1,6 +1,6 @@
 import gspread
 from google.oauth2.service_account import Credentials
-from pprint import pprint
+
 SCOPE = [
     "https://www.googleapis.com/auth/spreadsheets",
     "https://www.googleapis.com/auth/drive.file",
@@ -41,7 +41,7 @@ def get_sales_data():
         print("Example: 10,20,30,40,50,60\n")
 
         # Data input from the user stored in the variable data_str.
-        data_str = input("Enter your data here: ")
+        data_str = input("Enter your data here: \n")
         # split the data_str and store it in a variable called sales_data.
         sales_data = data_str.split(",")
         #Call the function validate_data and pass sales_data.
