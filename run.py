@@ -162,8 +162,28 @@ def main():
     sales_columns = get_last_5_entries_sales()
     stock_data = calculate_stock_stock(sales_columns)
     update_worksheet(stock_data, "stock")
-    
+    return stock_data
 
 print("Welcome to Love Sandwich Data Automation")
-main()    
+stock_data = main()    
 
+# Write you code below this comment
+def get_stock_values(data):
+    '''
+   - headings = SHEET.worksheet("stock").row_values(1): This line retrieves the values in the first row of the "stock" worksheet using SHEET.worksheet("stock").row_values(1). It assumes that the first row contains the headings for your data.
+
+- stock_values = {head: value for head, value in zip(headings, data)}: This line uses a dictionary comprehension to create a dictionary (stock_values). It pairs each heading from the headings list with the corresponding value from the data list, creating key-value pairs in the dictionary.
+
+- return stock_values: This line returns the resulting dictionary, where the keys are the headings and the values are the corresponding data values.
+
+- In summary, the function takes a list of data (data) and assumes that the first row of the "stock" worksheet contains the headings. It then creates a dictionary (stock_values) where each heading is paired with its corresponding data value from the data list. The resulting dictionary represents the stock values with their respective headings.
+'''
+    headings = SHEET.worksheet("stock").row_values(1)
+    stock_values = {head: value for head, value in zip(headings, data)}
+    return stock_values
+    
+
+    
+stock_values = get_stock_values(stock_data)
+print("Stock Values:")
+print(stock_values)
